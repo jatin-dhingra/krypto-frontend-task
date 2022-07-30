@@ -17,3 +17,13 @@ This is for the task assigned for `Krypto Frontend Task`
 1. Better data fetching and data management functions implementations
 2. Better and completely finished designs for all pages
 3. Better animations
+
+## Screenshots
+### Products Page
+![Products Page](./public/shots/1.png "Products Page")
+### Product Page
+![Product Page](./public/shots/2.png "Product Page")
+### Login Page
+![Login Page](./public/shots/3.png "Login Page")
+### Register Page
+![Register Page](./public/shots/4.png "Register Page")
