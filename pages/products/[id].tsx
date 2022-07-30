@@ -5,7 +5,7 @@ import ProductContext from "../../functions/ProductContext";
 import { UserData } from "../../interfaces/userContent";
 
 export async function getServerSideProps(context: any) {
-  const URL = "http://localhost:5000/products/";
+  const URL = "http://localhost:5000/products/1";
   const { id } = context.params;
 
   const res = await fetch(URL + id);
@@ -62,7 +62,9 @@ export default function ProductItem({ data }: any) {
             className="bg-black text-white hover:bg-black py-6"
             onClick={() => addToCart(data.id, parseInt(id || "0"))}
           >
-            Add to Cart
+            {cart_items.filter((item) => item.item_id == data.id).length > 0
+              ? "Remove from Cart"
+              : "Add to Cart"}
           </Button>
         </div>
       </div>
