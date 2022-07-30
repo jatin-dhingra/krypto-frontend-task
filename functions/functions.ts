@@ -24,6 +24,26 @@ export async function UserLogin(user: string, pass: string) {
   });
 }
 
+export async function RegisterLogin(
+  user: string,
+  pass: string,
+  first: string,
+  last: string
+) {
+  return fetch("http://localhost:5000/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: user,
+      password: pass,
+      firstname: first,
+      lastname: last,
+    }),
+  });
+}
+
 export function setLocalStorage(key: string, value: any) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));

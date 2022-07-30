@@ -14,6 +14,7 @@ interface Props {
 }
 
 export default function Product({ id, name, price, img, rating }: Props) {
+  console.log({ id, name, price, img, rating });
   const router = useRouter();
 
   let { cart_items, setOrders, favourites, setFavourites }: UserData =

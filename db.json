@@ -13,6 +13,13 @@
       "firstname": "Prateek",
       "lastname": "Bose",
       "id": 2
+    },
+    {
+      "email": "email@email.com",
+      "password": "$2a$10$eEA2wEFiweEyf9XQM1nDAOj8nF44Wu3fzad2awDeOa4jcihDFTy9K",
+      "firstname": "asdasd",
+      "lastname": "asdsad",
+      "id": 3
     }
   ],
   "products": [
