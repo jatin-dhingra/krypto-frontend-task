@@ -4,6 +4,8 @@ This is for the task assigned for `Krypto Frontend Task`
 1. For running the json-server `yarn server`
 2. For starting the application `yarn start`
 
+`NOTE`: Here the json-server should be started before running the application
+
 ## Implemented Functionalities
 1. User can like the product
 2. Add to cart
