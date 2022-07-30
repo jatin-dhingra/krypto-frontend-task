@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Button from "../components/button/Button";
-import { UserLogin } from "../functions/functions";
+import { RegisterLogin } from "../functions/functions";
 import ProductContext from "../functions/ProductContext";
 
 export default function Login() {
   const { setId, id } = useContext(ProductContext);
   const router = useRouter();
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ export default function Login() {
   const doLogin = () => {
     setErr("");
     setLoading(true);
-    UserLogin(user, pass)
+    RegisterLogin(user, pass, first, last)
       .then((res) =>
         res.json().then((data) => {
           if (res.status == 400) {
@@ -34,7 +36,7 @@ export default function Login() {
           } else {
             if (setId) setId(data.user.id ?? "");
             setTimeout(() => {
-              router.push("/");
+              router.push("/login");
             }, 1500);
           }
         })
@@ -74,9 +76,33 @@ export default function Login() {
       <h1 className="text-3xl uppercase font-bold font-['Oswald'] tracking-tight text-white">
         ShopKart
       </h1>
-      <div className="px-10 py-8 w-1/4 h-1/2 bg-white flex flex-col justify-between items-start">
+      <div className="px-10 py-8 w-1/4 h-2/3 bg-white flex flex-col justify-between items-start">
         <div className="flex flex-col gap-y-6 w-full">
-          <h1 className="text-xl font-semibold">Login to Shopkart</h1>
+          <h1 className="text-xl font-semibold">Register to Shopkart</h1>
+          <div className="flex flex-col gap-y-1 w-full font-medium">
+            <h3>First Name</h3>
+            <input
+              value={first}
+              onChange={(event) => setFirst(event.target.value)}
+              className="w-full border-2 rounded duration-300 px-3 py-2 font-normal focus:border-blue-600"
+              type="text"
+              name="first"
+              placeholder="Your first name"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-y-1 w-full font-medium">
+            <h3>Last Name</h3>
+            <input
+              value={last}
+              onChange={(event) => setLast(event.target.value)}
+              className="w-full border-2 rounded duration-300 px-3 py-2 font-normal focus:border-blue-600"
+              type="text"
+              name="last"
+              placeholder="Your last name"
+              required
+            />
+          </div>
           <div className="flex flex-col gap-y-1 w-full font-medium">
             <h3>Email Address</h3>
             <input
@@ -108,17 +134,8 @@ export default function Login() {
             className="w-full bg-slate-700 hover:bg-slate-900 text-white text-md font-medium py-3 flex justify-center items-center duration-300 h-12"
             onClick={() => doLogin()}
           >
-            {loading ? <AnimLoading /> : "Log In"}
+            {loading ? <AnimLoading /> : "Register"}
           </Button>
-          <h3 className="font-thin text-center">
-            Don't have a Shopkart account?{" "}
-            <span
-              className="duration-300 underline underline-offset-1 hover:underline-offset-4 hover:cursor-pointer"
-              onClick={() => router.push("/register")}
-            >
-              Register
-            </span>
-          </h3>
         </div>
       </div>
     </div>
